@@ -6,3 +6,7 @@ spring:
     port: 5672
     username: guest
     password: guest
+    # 手动确认收到信息
+    listener:
+      simple:
+        acknowledge-mode: manual

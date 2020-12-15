@@ -17,7 +17,9 @@ public class Demo1 {
 
         System.out.println(" [x] Received '" + in + "'");
 
-        //channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
+        // 手动确认收到信息
+        channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
+
         System.out.println("消息已确认");
     }
 
