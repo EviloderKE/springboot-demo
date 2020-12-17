@@ -72,4 +72,23 @@ public class ProducerDemo1Controller {
         System.out.println("send3 success");
     }
 
+    @RequestMapping("/send4")
+    public void sendAndReturn() {
+        String msg = "send4";
+
+        log.info(msg);
+
+        rabbitTemplate.setReturnCallback((message, replyCode, replyText, exchange, routingKey) -> {
+            log.info("被退回的消息为：{}", message);
+            log.info("replyCode：{}", replyCode);
+            log.info("replyText：{}", replyText);
+            log.info("exchange：{}", exchange);
+            log.info("routingKey：{}", routingKey);
+        });
+
+        rabbitTemplate.convertAndSend("fail", msg);
+        log.info("消息发送完毕。");
+    }
+
+
 }
