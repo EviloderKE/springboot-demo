@@ -5,11 +5,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class rabbitmq {
+public class Simple {
 
     @Bean
-    public Queue hello() {
-        return new Queue("hello");
+    public Queue simple() {
+        return new Queue("simple");
     }
 
 }

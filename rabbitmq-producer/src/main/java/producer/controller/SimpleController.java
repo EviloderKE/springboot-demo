@@ -5,7 +5,6 @@ import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,12 +19,12 @@ public class SimpleController {
     private RabbitTemplate rabbitTemplate;
 
     @Autowired
-    private Queue hello;
+    private Queue simple;
 
     @RequestMapping("/send")
     public void send(){
         // 简单消息传递
-        rabbitTemplate.convertAndSend(hello.getName(), "send");
+        rabbitTemplate.convertAndSend(simple.getName(), "send");
 
         System.out.println("send success");
     }
@@ -36,7 +35,7 @@ public class SimpleController {
 
         CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
 
-        rabbitTemplate.convertAndSend(hello.getName(), (Object) message, correlationData);
+        rabbitTemplate.convertAndSend(simple.getName(), (Object) message, correlationData);
 
         rabbitTemplate.setConfirmCallback((correlationData1, ack, cause) -> {
             log.info("CorrelationData content : " + correlationData1);

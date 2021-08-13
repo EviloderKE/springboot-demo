@@ -1,4 +1,4 @@
-package com.example.consumer.listener;
+package com.example.consumer.consumer;
 
 import com.rabbitmq.client.Channel;
 import org.springframework.amqp.core.Message;
@@ -10,7 +10,7 @@ import java.io.IOException;
 
 @Component
 @RabbitListener(queues = "hello")
-public class SimpleListener {
+public class SimpleConsumer {
 
     @RabbitHandler
     public void receive(String in, Channel channel, Message message) throws IOException {
