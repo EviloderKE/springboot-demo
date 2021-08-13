@@ -12,9 +12,4 @@ public class rabbitmq {
         return new Queue("hello");
     }
 
-    @Bean
-    public Queue hello1() {
-        return new Queue("hello1");
-    }
-
 }
