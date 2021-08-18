@@ -15,7 +15,7 @@ import java.io.IOException;
 public class SimpleConsumer2 {
 
     @RabbitHandler
-    public void receive(String in, Channel channel, Message message) throws IOException, InterruptedException {
+    public void receive(String in, Channel channel, Message message) throws IOException {
 
         log.info("SimpleConsumer2接受到消息:{}", in);
 
