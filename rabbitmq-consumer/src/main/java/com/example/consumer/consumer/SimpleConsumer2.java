@@ -12,12 +12,12 @@ import java.io.IOException;
 @Component
 @RabbitListener(queues = "simple")
 @Slf4j
-public class SimpleConsumer {
+public class SimpleConsumer2 {
 
     @RabbitHandler
-    public void receive(String in, Channel channel, Message message) throws IOException {
+    public void receive(String in, Channel channel, Message message) throws IOException, InterruptedException {
 
-        log.info("SimpleConsumer接受到消息:{}", in);
+        log.info("SimpleConsumer2接受到消息:{}", in);
 
         // 手动确认收到信息
         channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
